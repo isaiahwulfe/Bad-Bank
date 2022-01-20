@@ -4,16 +4,27 @@ function Login(){
   const [error, setError] = React.useState('');
   const [emailAttempt, setEmailAttempt] = React.useState('');
   const [passAttempt, setPassAttempt] = React.useState('');
-  const [timer, setTimer] = React.useState(3);
   const ctx = React.useContext(UserContext);
+
+  let clockLength = ["2", "1"];
 
   function redirect(){
     window.location.href="#/balance/"
   }
 
   function countdown(){
-    if(timer > 0){
-      setTimer(timer - 1);
+    countdownCallback();
+  }
+
+  function countdownCallback(){
+    let timerElement = document.getElementById("timer");
+    if(clockLength.length > 0){
+      console.log(clockLength.length);
+      timerElement.innerHTML = clockLength.shift();
+      setTimeout(() => countdown(), 1000);
+    }
+    if(clockLength.length < 1){
+      return null;
     }
   }
 
@@ -34,13 +45,11 @@ function Login(){
     console.log('success');
     console.log(ctx.userInfo.loggedIn);
     setTimeout(() => countdown(), 1000);
-    setTimeout(() => {
-      redirect();
-    }, 3000);
+    setTimeout(() => redirect(), 3000);
     return(
       <div style={{textAlign:"center"}}>
         <h4>Success!</h4>
-        <p>You are now logged in. You will be redirected in {timer} seconds.</p>
+        <div>You are now logged in. You will be redirected in <span id="timer">3</span> seconds.</div>
       </div>
     )
   }
