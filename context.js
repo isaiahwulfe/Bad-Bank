@@ -216,7 +216,7 @@ function UserBalance(props){
   const ctx = React.useContext(UserContext);
 
   return (
-    <div>
+    <div style={{paddingBottom:".75rem"}}>
       {ctx.userInfo.loggedIn ? (
         <h1 style={{textAlign: "center"}}>Your Current Balance is:<br /> ${props.currentBalance}</h1>
       ) : (

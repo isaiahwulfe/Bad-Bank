@@ -9,6 +9,7 @@ function Balance(){
         <Card 
           bgcolor="dark"
           header="Balance"
+          title="See Your Balance Here"
           body={
             <div className="balance">
               <UserBalance

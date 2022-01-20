@@ -19,6 +19,7 @@ function CreateAccount(){
         <Card
           bgcolor="dark"
           header="Create Account"
+          title="Create A New Account"
           status={status}
           body={show ? (  
                   <div>
