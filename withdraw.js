@@ -15,7 +15,7 @@ function Withdraw(){
               <UserBalance
                 currentBalance={currentBalance}
               />
-              {ctx.userInfo.loggedIn ? (<div>
+              {ctx.userInfo.loggedIn &&
                 <Form 
                   show={{name:false,email:false,password:false,amount:true}}
                   setAmount={setAmount}
@@ -24,7 +24,7 @@ function Withdraw(){
                   base={ctx.users[ctx.userInfo.userRef].balance}
                   setCurrentBalance={setCurrentBalance}
                 />
-              </div>) : (() => null)}
+              }
             </div>
           }
         />  

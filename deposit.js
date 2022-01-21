@@ -15,7 +15,7 @@ function Deposit(){
               <UserBalance
                 currentBalance={currentBalance}
               />
-              {ctx.userInfo.loggedIn ? (<div>
+              {ctx.userInfo.loggedIn && <div>
                 <Form 
                   show={{name:false,email:false,password:false,amount:true}} 
                   setAmount={setAmount}
@@ -24,7 +24,7 @@ function Deposit(){
                   setCurrentBalance={setCurrentBalance}
                   task="Deposit"
                 />
-              </div>) : (() => null)}
+              </div>}
             </div>
           }
         />

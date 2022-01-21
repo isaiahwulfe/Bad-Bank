@@ -5,8 +5,17 @@ function Login(){
   const [emailAttempt, setEmailAttempt] = React.useState('');
   const [passAttempt, setPassAttempt] = React.useState('');
   const ctx = React.useContext(UserContext);
+  React.useEffect(() => {
+    return () => {
+        console.log("clearing");
+        clearTimeout(pageChange);
+        clearTimeout(counter)
+    }
+  })
 
   let clockLength = ["2", "1"];
+  let pageChange;
+  let counter;
 
   function redirect(){
     window.location.href="#/balance/"
@@ -21,7 +30,7 @@ function Login(){
     if(clockLength.length > 0){
       console.log(clockLength.length);
       timerElement.innerHTML = clockLength.shift();
-      setTimeout(() => countdown(), 1000);
+      counter = setTimeout(() => countdown(), 1000);
     }
     if(clockLength.length < 1){
       return null;
@@ -45,7 +54,7 @@ function Login(){
     console.log('success');
     console.log(ctx.userInfo.loggedIn);
     setTimeout(() => countdown(), 1000);
-    setTimeout(() => redirect(), 3000);
+    pageChange = setTimeout(() => redirect(), 3000);
     return(
       <div style={{textAlign:"center"}}>
         <h4>Success!</h4>
